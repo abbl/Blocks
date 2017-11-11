@@ -1,12 +1,12 @@
 package pl.bbl.game.entities;
 
+import com.badlogic.gdx.graphics.g3d.ModelInstance;
 import com.badlogic.gdx.math.Vector3;
 
 public abstract class GameObject {
-    private Vector3 position;
+    private ModelInstance modelInstance;
 
     protected GameObject(){
-        position = new Vector3();
     }
 
     public void update(){
@@ -18,10 +18,18 @@ public abstract class GameObject {
     }
 
     public Vector3 getPosition(){
-        return position;
+        if(isModelLoaded())
+            return modelInstance.transform.getTranslation(new Vector3());
+        return null;
     }
 
-    public void setPosition(Vector3 position){
-        this.position = position;
+    public void setPosition(Vector3 vector3){
+        if(isModelLoaded())
+            modelInstance.transform.setToTranslation(vector3);
     }
+
+    public boolean isModelLoaded(){
+        return modelInstance != null;
+    }
+
 }
