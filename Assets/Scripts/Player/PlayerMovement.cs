@@ -3,7 +3,6 @@ using System.Collections;
 
 public class PlayerMovement : MonoBehaviour {
     private CharacterController characterController;
-    private Camera playerCamera;
     private Vector3 moveDirection;
 
     public float speed = 0.005f;
@@ -13,7 +12,6 @@ public class PlayerMovement : MonoBehaviour {
     // Use this for initialization
 	void Start () {
         characterController = gameObject.GetComponent<CharacterController>();
-        playerCamera = gameObject.GetComponentInChildren<Camera>();
         moveDirection = Vector3.zero;
 	}
 	
